@@ -1,30 +1,44 @@
 import React, { Component } from 'react'
 import user_ from '../assets/images/user.svg';
 import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 import '../assets/css/Login.css'
 import _ from 'lodash'
 
 
 class Login extends Component {
-	componentDidMount() {
+	constructor(props) {
+	    super(props);
+	    this.state = {authedUser: ''};
+
+	    this.handleSubmit = this.handleSubmit.bind(this);
+  	}
+
+	handleSubmit(event) {
+	    event.preventDefault();
+	    const { dispatch } = this.props
+	    dispatch(setAuthedUser({
+	      id: this.state.authedUser
+	    }))
 	}
+
 	render() {
 		const {users} = this.props
 		return (
 			<div className="Login">
 		      <h1 className="Login__name">Would you Rather!</h1>
 		      <img src={user_} alt="user-img" className="Login__img" height="150"/>
-	
+				<form onSubmit={this.handleSubmit}>
 		      		<div className="bp3-select bp3-large">
-					  <select className="bp3-select select">
-						  <option selected disabled>Choose user to login</option>
+					  <select defaultValue="null" value={this.state.value} className="bp3-select select" onChange={(event) => this.setState({authedUser: event.target.value})}>
+						  <option disabled value="null">Choose user to login</option>
 						  {_.values(users).map((user) => {
-						  	return <option key={user.id}>{user.name}</option>
+						  	return <option key={user.id} value={user.id}>{user.name}</option>
 						  })}
 					  </select>
 					</div>
-
-		      <button className="Login__btn">Sign in</button>
+				</form>
+		      <button className="Login__btn" onClick={this.handleSubmit}>Sign in</button>
 		      <p className="Login__info"> </p>
 		    </div>
 	    )
