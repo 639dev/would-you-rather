@@ -1,0 +1,48 @@
+@import "~@blueprintjs/core/lib/scss/variables.scss";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #474787;
+  font-family: 'Baloo Bhai', cursive 
+}
+.Login__name {
+  color: #fff;
+}
+.Login__status,
+.Login__info {
+  padding: 1rem;
+}
+.Login__status {
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+.Login__img {
+  border-radius: 50%;
+  margin: 2rem 0;
+}
+.Login__btn {
+  padding: .7rem;
+  width: 150px;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  outline: 0;
+  color: #474787;
+  font-family: 'Baloo Bhai', cursive;
+}
+.Login__btn:hover {
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.select{
+  font-family: 'Baloo Bhai', cursive ;
+  border-radius: 30px;
+  color: #7f8c8d !important;
+}

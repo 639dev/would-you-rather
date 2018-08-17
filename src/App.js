@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Login from './containers/Login'
+import { handleInitialData } from './actions/shared'
+import { connect } from 'react-redux'
+
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Login/>
       </div>
     );
   }
 }
 
-export default App;
+export default connect()(App)
