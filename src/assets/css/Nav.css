@@ -2,14 +2,19 @@ ul {
 	display: flex;
 	margin: 0;
 	padding: 0;
+	height: 10%;
 }
 
-ul li {
+ul a {
 	list-style-type: none;
 	padding: 40px 30px;
 	border: 3px solid #fff;
 	width: 33.33%;
 	background-color: #ffb142;
+}
+
+ul a:hover {
+	background-color: #cc8e35;
 }
 
 .score {
@@ -31,10 +36,4 @@ ul li {
 	background-size: 9%;
 	background-repeat: no-repeat;
 	background-position: center;
-}
-
-
-main {
-	background-color: #d1ccc0;
-	height: 100vh;
 }

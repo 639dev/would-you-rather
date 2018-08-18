@@ -11,7 +11,6 @@ class Login extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {authedUser: null};
-
 	    this.handleSubmit = this.handleSubmit.bind(this);
   	}
 

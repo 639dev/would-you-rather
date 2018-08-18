@@ -1,9 +1,8 @@
 import React from 'react'
-import Header from '../components/Header' 
-import Nav from '../components/Nav'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import '../assets/css/Home.css'
 
 
 
@@ -20,10 +19,7 @@ class Home extends React.Component {
 	    }
 		return (
 			<div>
-				<Header user={this.props.user} />
-			    <Nav/>
 				<main>
-					Main
 				</main>
 			</div>
 		)
