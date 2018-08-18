@@ -9,6 +9,7 @@ import { handleInitialData } from './actions/shared'
 import { connect } from 'react-redux'
 import './App.css';
 
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
@@ -19,17 +20,17 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-          {this.props.authedUser !== null && (
-            <Fragment>
-            <Header users={users} authedUser={authedUser}/>
-            <Nav />
-            </Fragment>
-          )}
-          <Switch>
-              <Route exact path="/" component={Home} />
-              <Route  path='/login' component={Login} />
-              <Route  path='/questions' component={AllQuestions} />
-          </Switch>
+            {this.props.authedUser !== null && (
+              <Fragment>
+                <Header users={users} authedUser={authedUser}/>
+                <Nav />
+              </Fragment>
+            )}
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route  path='/login' component={Login} />
+                <Route  path='/questions' component={AllQuestions} />
+            </Switch>
           </div>
       </Router>
     )

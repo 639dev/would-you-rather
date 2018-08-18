@@ -1,0 +1,38 @@
+.tab-link  {
+    overflow: hidden;
+    background-color: #34ace0;
+    width: 50%;
+    padding: 30px 20px;
+    border: 3px solid white;
+    color: #fff;
+    font-size: 20px;
+}
+
+.tab-link:hover {
+    background-color: #227093;
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}

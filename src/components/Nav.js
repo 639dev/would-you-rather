@@ -4,7 +4,7 @@ import '../assets/css/Nav.css'
 
 const Nav = () => {
 	return (
-		<ul>
+		<ul className="navigator">
 			<Link className="home" to="/questions"><li></li></Link>
 			<Link className="add" to="/"><li></li></Link>
 			<Link className="score" to="/"><li></li></Link>
