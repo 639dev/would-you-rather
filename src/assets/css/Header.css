@@ -22,6 +22,12 @@
 	background-color: #fff;
 }
 
+.logout-img {
+	border-radius: 50%;
+	margin: 10px;
+	background-color: #fff;
+}
+
 .user-greeting {
 	margin-top: auto;
     margin-bottom: auto;
