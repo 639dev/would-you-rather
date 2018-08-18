@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import user_ from '../assets/images/user.svg';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 import '../assets/css/Login.css'
 import _ from 'lodash'
@@ -9,7 +10,7 @@ import _ from 'lodash'
 class Login extends Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {authedUser: ''};
+	    this.state = {authedUser: null};
 
 	    this.handleSubmit = this.handleSubmit.bind(this);
   	}
@@ -38,7 +39,7 @@ class Login extends Component {
 					  </select>
 					</div>
 				</form>
-		      <button className="Login__btn" onClick={this.handleSubmit}>Sign in</button>
+				<button className="Login__btn" onClick={this.handleSubmit}><Link to='/'>Sign in</Link></button>
 		      <p className="Login__info"> </p>
 		    </div>
 	    )

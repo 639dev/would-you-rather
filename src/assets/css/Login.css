@@ -35,6 +35,7 @@
   border-radius: 30px;
   outline: 0;
   color: #474787;
+  display: block;
   font-family: 'Baloo Bhai', cursive;
 }
 .Login__btn:hover {
