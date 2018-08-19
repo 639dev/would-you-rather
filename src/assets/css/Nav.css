@@ -17,6 +17,9 @@ ul a:hover {
 	background-color: #cc8e35;
 }
 
+.navigator .active1 {
+	background-color: #cc8e35;
+}
 .score {
 	background-image: url('../images/star.png');
 	background-size: 9%;

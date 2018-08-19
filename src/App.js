@@ -4,6 +4,7 @@ import Login from './containers/Login'
 import Home from './containers/Home'
 import Header from './components/Header' 
 import Nav from './components/Nav'
+import Poll from './components/Poll'
 import AllQuestions from './containers/AllQuestions'
 import { handleInitialData } from './actions/shared'
 import { connect } from 'react-redux'
@@ -27,9 +28,10 @@ class App extends Component {
               </Fragment>
             )}
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route  exact path="/" component={Home} />
                 <Route  path='/login' component={Login} />
-                <Route  path='/questions' component={AllQuestions} />
+                <Route  exact path='/questions' component={AllQuestions} />
+                <Route  exact path='/questions/poll/:id' component={Poll} />
             </Switch>
           </div>
       </Router>

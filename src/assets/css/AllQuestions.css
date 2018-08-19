@@ -8,6 +8,18 @@
     font-size: 20px;
 }
 
+.active {
+  background-color: #227093;
+}
+
+.scrollable {
+    overflow-y: scroll;
+    position: relative;
+    height: 600px;
+    background-color: #f7f1e3;
+    padding: 20px;
+}
+
 .tab-link:hover {
     background-color: #227093;
     color: #fff;
@@ -49,6 +61,7 @@
 .card-info {
     display: flex;
     background-color: #d1ccc0;
+    height: 150px;
 }
 
 .card-img {
@@ -59,6 +72,8 @@
 
 .image-div {
     padding: 10px;
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 .q-div {
@@ -72,7 +87,7 @@
     margin: 10px;
 }
 
-.q-div button {
+.q-div a {
     position: absolute;
     right: 30px;
     bottom: 23px;
@@ -85,9 +100,14 @@
     font-size: 13px;
 }
 
-.q-div button:hover {
-    background-color: #33d9b2;
-    color: #fff;
+.q-div a:hover {
+    background-color: #fff;
+    color: #40407a;
+    text-decoration: none;
+}
+
+em {
+  color: #b33939;
 }
 
 @media (min-width: 768px) {
