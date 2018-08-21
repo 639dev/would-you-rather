@@ -1,13 +1,21 @@
 import React from 'react'
 import '../assets/css/Header.css'
 import { connect } from 'react-redux'
+import { Redirect,Link } from 'react-router-dom'
 import logout from '../assets/images/log-out2.png'
 import _ from 'lodash'
 
 
 
 class Header extends React.Component {
-	
+	constructor(props) {
+		super(props)
+		this.logout = this.logout.bind(this)
+	}
+	logout () {
+		console.log('ss')
+		return <Redirect to='/login'/>
+	}
 	render() {
 		const {users} = this.props
 		const authedUser = _.values(this.props.authedUser)
@@ -20,7 +28,7 @@ class Header extends React.Component {
 				<div className="user-info">	
 					<h2 className="user-greeting"> Hello {user.id}</h2>
 					<img src={user.avatarURL} alt="user-img" className="user-img" height="100"/>
-					<img src={'https://img.icons8.com/color/logout/100'} alt="user-img" className="logout-img" height="100"/>
+					<a onClick={this.logout}><img src={'https://img.icons8.com/color/logout/100'} alt="user-img" className="logout-img" height="100" /></a>  
 				</div>
 			</header>
 		)

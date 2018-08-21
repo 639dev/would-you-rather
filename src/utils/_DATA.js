@@ -40,11 +40,11 @@ let questions = {
     author: 'sarahedo',
     timestamp: 1467166872634,
     optionOne: {
-      votes: ['sarahedo'],
+      votes: ['sarahedo','johndoe','tylermcginnis'],
       text: 'have horrible short term memory',
     },
     optionTwo: {
-      votes: [],
+      votes: ['xxx'],
       text: 'have horrible long term memory'
     }
   },
@@ -196,7 +196,6 @@ export function _saveQuestionAnswer ( authedUser, qid, answer ) {
           }
         }
       }
-      console.log(questions)
       res()
     }, 500)
   })

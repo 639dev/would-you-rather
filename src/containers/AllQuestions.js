@@ -14,16 +14,23 @@ class AllQuestions extends React.Component {
 				<Tabs>
 				    <Tab title="Unanswered Questions" linkClassName={'link-class-0'} className="tab">
 					    <div className="scrollable">
-						    { _.values(this.props.questions).map( (question) => {
+						    { this.props.Unanswered.map( (question) => {
 						    	let user = _.values(this.props.users).filter((user) => user.id == question.author);
 						        return (
-						    		<QuestionCard user={user[0]} question={question} key={question.id}/>
+						    		<QuestionCard user={user[0]} question={question} key={question.id} text="view Poll"/>
 						    	)
 						    })}
 					    </div>
 				    </Tab>
 				    <Tab title="Answered Questions" linkClassName={'link-class-1'} className="tab">
-				       <h1>content 1</h1>
+				       <div className="scrollable">
+						    { this.props.Answered.map( (question) => {
+						    	let user = _.values(this.props.users).filter((user) => user.id == question.author);
+						        return (
+						    		<QuestionCard user={user[0]} question={question} key={question.id} text="view Poll Details"/>
+						    	)
+						    })}
+					    </div>
 				    </Tab>
 				</Tabs>
 			</div>
@@ -34,10 +41,14 @@ class AllQuestions extends React.Component {
 
 
 function mapStateToProps ({ authedUser, users,questions}) {
+  const user = _.values(users).filter((user) => user.id == authedUser.id )
+  const Unanswered = _.values(questions).filter((question) => !user[0].answers.hasOwnProperty(question.id))
+  const Answered = _.values(questions).filter((question) => user[0].answers.hasOwnProperty(question.id))
   return {
-    authedUser: authedUser,
-    questions: questions,
-    users: users
+    authedUser,
+    Unanswered,
+    Answered,
+    users
   }
 }
 
