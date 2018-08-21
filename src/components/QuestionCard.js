@@ -3,14 +3,13 @@ import '../assets/css/AllQuestions.css'
 import { Card } from "@blueprintjs/core";
 import { Link,withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import _ from 'lodash'
 
 
 class QuestionCard extends React.Component {
 	render() {
 		return (
 			<Card className="card">
-			    <h2><a href="#">{this.props.question.author} asks...</a></h2>
+			    <h2><a href="">{this.props.question.author} asks...</a></h2>
 			    <div className="card-info">
 			    	<div className="image-div">
 			    		<img src={this.props.user.avatarURL} alt="user-img" className="card-img" />

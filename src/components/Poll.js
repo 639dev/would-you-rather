@@ -1,10 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import QuestionCard from '../components/QuestionCard'
 import { handleSaveAnswer } from '../actions/questions' 
 import { handleSaveUserAnswer } from '../actions/users'
 import { Redirect } from 'react-router-dom'
-import { IProgressBarProps } from "@blueprintjs/core";
 import '../assets/css/Poll.css'
 import _ from 'lodash'
 
@@ -89,12 +87,11 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   let opt1votes = question1[0].optionOne.votes.length
   let opt2votes = question1[0].optionTwo.votes.length
   const totalVotes = opt1votes + opt2votes
-  console.log(opt1votes,opt2votes,totalVotes)
+
   if (totalVotes !== 0) {
   	opt1votes =  ((opt1votes/totalVotes) * 100).toFixed(2)
   	opt2votes =  ((opt2votes/totalVotes) * 100).toFixed(2)
   }
-  console.log(opt1votes,opt2votes,totalVotes)
   return {
   	id,
   	authedUser,
@@ -102,7 +99,6 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   	opt1votes,
   	opt2votes,
   	question: question1[0],
-  	users: users
   }
 }
 

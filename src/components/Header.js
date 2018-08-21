@@ -1,8 +1,7 @@
 import React from 'react'
 import '../assets/css/Header.css'
 import { connect } from 'react-redux'
-import { Redirect,Link } from 'react-router-dom'
-import logout from '../assets/images/log-out2.png'
+import { Redirect } from 'react-router-dom'
 import _ from 'lodash'
 
 
