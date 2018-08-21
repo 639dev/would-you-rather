@@ -17,7 +17,7 @@ class AllQuestions extends React.Component {
 						    { _.values(this.props.questions).map( (question) => {
 						    	let user = _.values(this.props.users).filter((user) => user.id == question.author);
 						        return (
-						    		<QuestionCard user={user[0]} question={question}/>
+						    		<QuestionCard user={user[0]} question={question} key={question.id}/>
 						    	)
 						    })}
 					    </div>
