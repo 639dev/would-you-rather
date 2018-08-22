@@ -10,16 +10,19 @@ import _ from 'lodash'
 class Login extends Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {authedUser: null};
+	    this.state = {authedUser: null,picked:false};
 	    this.handleSubmit = this.handleSubmit.bind(this);
   	}
 
 	handleSubmit(event) {
-	    event.preventDefault();
-	    const { dispatch } = this.props
-	    dispatch(setAuthedUser({
-	      id: this.state.authedUser
-	    }))
+		if(this.state.picked != false) {
+			console.log("no")
+		    event.preventDefault();
+		    const { dispatch } = this.props
+		    dispatch(setAuthedUser({
+		      id: this.state.authedUser
+		    }))
+		}
 	}
 
 	render() {
@@ -30,7 +33,7 @@ class Login extends Component {
 		      <img src={user_} alt="user-img" className="Login__img" height="150"/>
 				<form onSubmit={this.handleSubmit}>
 		      		<div className="bp3-select bp3-large">
-					  <select defaultValue="null" value={this.state.value} className="bp3-select select" onChange={(event) => this.setState({authedUser: event.target.value})}>
+					  <select defaultValue="null" value={this.state.value} className="bp3-select select" onChange={(event) => this.setState({authedUser: event.target.value,picked: true})}>
 						  <option disabled value="null">Choose user to login</option>
 						  {_.values(users).map((user) => {
 						  	return <option key={user.id} value={user.id}>{user.name}</option>
@@ -38,7 +41,7 @@ class Login extends Component {
 					  </select>
 					</div>
 				</form>
-				<button className="Login__btn" onClick={this.handleSubmit}><Link to='/'>Sign in</Link></button>
+				<button className="Login__btn" onClick={this.handleSubmit}><Link to={this.state.picked? '/' : 'error'}>Sign in</Link></button>
 		      <p className="Login__info"> </p>
 		    </div>
 	    )
