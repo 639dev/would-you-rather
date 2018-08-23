@@ -1,4 +1,4 @@
-.App-header {
+/*.App-header {
   background-color: #40407a;
   height: 15%;
   padding: 20px;
@@ -31,4 +31,86 @@
 .user-greeting {
 	margin-top: auto;
     margin-bottom: auto;
+}*/
+
+
+.user-greeting {
+	margin-top: auto;
+    margin-bottom: auto;
+}
+
+.banner {
+	height: 180px;
+	background-color: #62DEBE;
+	margin-top: 0;
+	display:table;
+    width:100%;
+}
+
+.banner h1 {
+	display:table-cell; 
+	vertical-align:middle;
+	color: black;
+	font-size: 40px;
+}
+@media (max-width: 600px) {
+  .site-header {
+      flex-wrap: wrap;
+  }
+  .site-nav {
+    order: 2;
+    background: #333;
+    width: 100%;
+  }
+}
+
+.site-header {
+  background: #0D1313;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 10px;
+}
+
+.site-nav ul{
+
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #CDD0D0;
+    padding: 20px;
+    display: inline-block;
+}
+.site-nav .active a {
+   font-weight: bold;
+   color: black;
+   background: #dfe6e9;
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.sign-out-link {
+  color: #62DEBE;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  text-transform: uppercase;
 }

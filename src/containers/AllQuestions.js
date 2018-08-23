@@ -10,30 +10,28 @@ class AllQuestions extends React.Component {
 
 	render() {
 		return (
-			<div className="container">
-				<Tabs>
-				    <Tab title="Unanswered Questions" linkClassName={'link-class-0'} className="tab">
-					    <div className="scrollable">
-						    { this.props.Unanswered.map( (question) => {
-						    	let user = _.values(this.props.users).filter((user) => user.id == question.author);
-						        return (
-						    		<QuestionCard user={user[0]} question={question} key={question.id} text="view Poll"/>
-						    	)
-						    })}
-					    </div>
-				    </Tab>
-				    <Tab title="Answered Questions" linkClassName={'link-class-1'} className="tab">
-				       <div className="scrollable">
-						    { this.props.Answered.map( (question) => {
-						    	let user = _.values(this.props.users).filter((user) => user.id == question.author);
-						        return (
-						    		<QuestionCard user={user[0]} question={question} key={question.id} text="view Poll Details"/>
-						    	)
-						    })}
-					    </div>
-				    </Tab>
-				</Tabs>
-			</div>
+			<Tabs>
+			    <Tab title="Unanswered Questions" linkClassName={'link-class-0'} className="tab">
+				    <div className="scrollable">
+					    { this.props.Unanswered.map( (question) => {
+					    	let user = _.values(this.props.users).filter((user) => user.id == question.author);
+					        return (
+					    		<QuestionCard user={user[0]} question={question} key={question.id} text="view Poll"/>
+					    	)
+					    })}
+				    </div>
+			    </Tab>
+			    <Tab title="Answered Questions" linkClassName={'link-class-1'} className="tab">
+			       <div className="scrollable">
+					    { this.props.Answered.map( (question) => {
+					    	let user = _.values(this.props.users).filter((user) => user.id == question.author);
+					        return (
+					    		<QuestionCard user={user[0]} question={question} key={question.id} text="view Poll Details"/>
+					    	)
+					    })}
+				    </div>
+			    </Tab>
+			</Tabs>
 		)
 	}
 }

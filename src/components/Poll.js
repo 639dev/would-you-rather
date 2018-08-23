@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleSaveAnswer } from '../actions/questions' 
 import { handleSaveUserAnswer } from '../actions/users'
 import { Redirect } from 'react-router-dom'
+import { Card } from "@blueprintjs/core";
 import '../assets/css/Poll.css'
 import _ from 'lodash'
 
@@ -33,46 +34,53 @@ class Poll extends React.Component {
 	    }
 	    if (this.props.has_answered) {
 	    	return (
-			<div className="container">
-				<div className="scrollable">
-				<h1>Would you Rather..</h1>
-						<div className="radio-div">
-							<input type="radio" name="answer" id="opt1"/>
+			<Card className="card">
+			    <h2><a href="">{this.props.question.author} asks...</a></h2>
+			    <div className="card-info">
+			    	<div className="image-div">
+			    		<img src={this.props.user[0].avatarURL} alt="user-img" className="card-img" />
+			    	</div>
+			    	<div className="q-div align-left">
+			    		<div className="option">
 							<label htmlFor="opt1">{question.optionOne.text}</label>
 						</div>
 						<div className="bp3-progress-bar bp3-no-animation bp3-no-stripes">
 							  <div className="bp3-progress-meter" style={{width: this.props.opt1votes+'%'}}></div>
 						</div>
-						<div className="radio-div">
-							<input type="radio" name="answer" id="opt2"/>
+						<div className="option">
 							<label htmlFor="opt2">{question.optionTwo.text}</label>
 						</div>
 						<div className="bp3-progress-bar bp3-no-animation bp3-no-stripes">
 							<div className="bp3-progress-meter" style={{width: this.props.opt2votes+'%'}}></div>
 					    </div>
-				</div>
-			</div>
+			    	</div>
+			    </div>
+			</Card>	
+
 		)
 	    }
 		return (
-			<div className="container">
-				<div className="scrollable">
-				<h1>Would you Rather..</h1>
-					<form onSubmit={this.save_answer} className="form">
-						<div className="radio-div">
-							<input type="radio" name="answer" id="opt1"/>
-							<label htmlFor="opt1">{question.optionOne.text}</label>
-						</div>
-						<div className="radio-div">
-							<input type="radio" name="answer" id="opt2"/>
-							<label htmlFor="opt2">{question.optionTwo.text}</label>
-						</div>
-						<div>
+			<Card className="card">
+			    <h2><a href="">{this.props.question.author} asks...</a></h2>
+			    <div className="card-info">
+			    	<div className="image-div">
+			    		<img src={this.props.user[0].avatarURL} alt="user-img" className="card-img" />
+			    	</div>
+			    	<div className="q-div">
+			    		<form onSubmit={this.save_answer} className="form">
+			    			<div className="radio-div">
+								<input type="radio" name="answer" id="opt1"/>
+								<label htmlFor="opt1">{question.optionOne.text}</label>
+							</div>
+							<div className="radio-div">
+								<input type="radio" name="answer" id="opt2"/>
+								<label htmlFor="opt2">{question.optionTwo.text}</label>
+							</div>
 							<button type="submit">Save Answer</button>
-						</div>
-					</form>
-				</div>
-			</div>
+					   </form>
+			    	</div>
+			    </div>
+			</Card>		
 		)
 	}	
 }
@@ -94,6 +102,7 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   }
   return {
   	id,
+  	user,
   	authedUser,
   	has_answered,
   	opt1votes,

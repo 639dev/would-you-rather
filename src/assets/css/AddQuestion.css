@@ -1,0 +1,21 @@
+.input-div {
+	margin-bottom: 15px;
+}
+
+.input-div label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.input-div input {
+	width: 100%;
+	padding: 5px;
+}
+
+.custom-height {
+	height: 240px;
+}
+
+form button {
+	bottom: 20px;
+}

@@ -1,0 +1,28 @@
+.score-div {
+	/*border: 1px solid grey;
+    border-radius: 50%;
+    width: 15%;
+    height: 40%;
+    margin: auto;*/
+  width: 25%;
+  height: 60%;
+  border-radius: 50%;
+  font-size: 50px;
+  color: #fff;
+  line-height: 90px;
+  text-align: center;
+  background: #b2bec3;
+  margin: auto;
+}
+
+.custom-padding {
+	padding: 0 20px;
+}
+
+.custom-margin {
+	margin: auto;
+}
+
+.card-img {
+
+}

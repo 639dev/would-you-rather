@@ -1,22 +1,21 @@
 .tab-link  {
     overflow: hidden;
-    background-color: #34ace0;
+    background-color: #2d3436;
     width: 50%;
-    padding: 30px 20px;
+    padding: 18px 20px;
     border: 3px solid white;
     color: #fff;
     font-size: 20px;
 }
 
 .active {
-  background-color: #227093;
+  background-color: #636e72;
 }
 
 .scrollable {
     overflow-y: scroll;
     position: relative;
     height: 600px;
-    background-color: #f7f1e3;
     padding: 20px;
 }
 
@@ -34,81 +33,6 @@
   margin-top: 30px;
 }
 
-.card {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  padding: 0px;
-  border-radius: 0;
-}
-
-.card h2 {
-    text-align: left;
-    border-bottom: 1px solid lightgray;
-    padding: 10px;
-    margin: 0;
-    background: #33d9b2;
-}
-
-.card h2 a {
-    color: #fff;
-}
-.card h2 a:hover {
-    color: #fff;
-    text-decoration: none;
-}
-.card-info {
-    display: flex;
-    background-color: #d1ccc0;
-    height: 150px;
-}
-
-.card-img {
-    border-radius: 50%;
-    background-color: #fff;
-    border: 3px solid #fff;
-}
-
-.image-div {
-    padding: 10px;
-    margin-bottom: auto;
-    margin-top: auto;
-}
-
-.q-div {
-    width: 100%;
-    color: #474787;
-    position: relative;
-}
-
-.q-div p {
-    font-size: 20px;
-    margin: 10px;
-}
-
-.q-div a {
-    position: absolute;
-    right: 30px;
-    bottom: 23px;
-    width: 86%;
-    padding: 15px;
-    background-color: transparent;
-    border: 3px solid #fff;
-    color: #fff;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.q-div a:hover {
-    background-color: #fff;
-    color: #40407a;
-    text-decoration: none;
-}
-
-em {
-  color: #b33939;
-}
 
 @media (min-width: 768px) {
   .container {

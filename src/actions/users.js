@@ -1,6 +1,7 @@
 
 export const GET_USERS = 'GET_USERS'
 export const SAVE_USER_ANSWER = 'SAVE_USER_ANSWER'
+export const SAVE_USER_QUESTION = 'SAVE_USER_QUESTION'
 
 export function getUsers(users) {
   return {
@@ -17,6 +18,14 @@ function saveUserAnswer(user,question,answer) {
 		question,
 		answer
 	}
+}
+
+export function saveUserQuestion(question,author) {
+  return {
+    type: SAVE_USER_QUESTION,
+    question,
+    author
+  }
 }
 
 

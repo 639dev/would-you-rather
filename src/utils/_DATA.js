@@ -131,11 +131,11 @@ export function _getQuestions () {
   })
 }
 
-function formatQuestion ({ optionOneText, optionTwoText, author }) {
+function formatQuestion ({ optionOneText, optionTwoText, authedUser }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
-    author,
+    author:authedUser,
     optionOne: {
       votes: [],
       text: optionOneText,
@@ -148,8 +148,9 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion (question) {
+  console.log(question)
   return new Promise((res, rej) => {
-    const authedUser = question.author;
+    const authedUser = question.authedUser;
     const formattedQuestion = formatQuestion(question);
 
     setTimeout(() => {
