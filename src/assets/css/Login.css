@@ -7,22 +7,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  background-color: #474787;
+  height: 94.5%;
+  background-color: #d1ccc0;
   font-family: 'Baloo Bhai', cursive 
 }
 .Login__name {
-  color: #fff;
+  color: #40407a;
   font-size: 50px
 }
 .Login__status,
 .Login__info {
   padding: 1rem;
 }
-.Login__status {
-  color: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-}
+
 .Login__img {
   border-radius: 50%;
   margin: 2rem 0;
@@ -34,9 +31,10 @@
   font-size: 1.2rem;
   border-radius: 30px;
   outline: 0;
-  color: #474787;
+  color: #fff !important;
   display: block;
   font-family: 'Baloo Bhai', cursive;
+  background-color: #218c74;
 }
 .Login__btn:hover {
   background: rgba(255, 255, 255, 0.7);
@@ -46,5 +44,6 @@
 .select{
   font-family: 'Baloo Bhai', cursive ;
   border-radius: 30px;
-  color: #7f8c8d !important;
+  color: #40407a !important;
 }
+

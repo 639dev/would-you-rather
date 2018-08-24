@@ -20,7 +20,7 @@ class Header extends React.Component {
 		const authedUser = _.values(this.props.authedUser)
 		const user = _.values(users).find(function (obj) { return obj.id == authedUser })
 		return (
-			<div>
+			<div className="header-div">
 				<header className="site-header">
 				  
 				  <nav className="site-nav">

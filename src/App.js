@@ -10,6 +10,7 @@ import AddQuestion from './components/AddQuestion'
 import AllQuestions from './containers/AllQuestions'
 import { handleInitialData } from './actions/shared'
 import { connect } from 'react-redux'
+import LoadingBar from 'react-redux-loading-bar';
 import './App.css';
 
 
@@ -21,7 +22,8 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-                <Header/>
+           <LoadingBar />
+            <Header/>
             <Switch>
                 <Route  exact path="/" component={Home} />
                 <Route  path='/login' component={Login} />

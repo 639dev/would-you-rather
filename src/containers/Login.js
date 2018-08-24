@@ -27,6 +27,7 @@ class Login extends Component {
 
 	render() {
 		const {users} = this.props
+	
 		return (
 			<div className="Login">
 		      <h1 className="Login__name">Would you Rather!</h1>

@@ -3,6 +3,7 @@ import { Card } from "@blueprintjs/core";
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions';
+import { Redirect } from 'react-router-dom'
 import '../assets/css/AddQuestion.css'
 
 
@@ -13,6 +14,7 @@ class AddQuestion extends React.Component {
 	    this.state = {
 	        optionOneText: '',
 	    	optionTwoText: '',
+	    	posted: false,
 	    }
 	    this.save_question= this.save_question.bind(this)
   	}
@@ -20,20 +22,24 @@ class AddQuestion extends React.Component {
   	save_question(e) {
   		e.preventDefault()
   		const { optionOneText, optionTwoText } = this.state
-  		const { dispatch ,authuser} = this.props;
+  		const { dispatch ,autheduser} = this.props;
   		if( optionOneText && optionTwoText ) {
-  			const authedUser = authuser.id
+  			const authedUser = autheduser.id
   			dispatch(handleAddQuestion({authedUser,optionOneText, optionTwoText}));
+  			this.setState({posted: true})
   		}
   	}
 
   	render() {
+  		if(this.state.posted) {
+  			return <Redirect to="/" />;
+  		}
   		return (
 	  		<Card className="card">
 			    <h2><a href="">Would you rather...</a></h2>
 			    <div className="card-info custom-height">
 			    	<div className="image-div">
-			    		<img src={this.props.authuser.avatarURL} alt="user-img" className="card-img" />
+			    		<img src={this.props.autheduser.avatarURL} alt="user-img" className="card-img" />
 			    	</div>
 			    	<div className="q-div">
 			    		<form onSubmit={this.save_question} className="form">
@@ -57,9 +63,9 @@ class AddQuestion extends React.Component {
 
 function mapStateToProps ({ authedUser, users}) {
   const user = _.values(users).filter((user) => user.id == authedUser.id )
-  const authuser = user[0]
+  const autheduser = user[0]
   return {
-  	authuser
+  	autheduser
   }
 }
 
