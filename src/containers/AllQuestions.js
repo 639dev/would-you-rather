@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import '../assets/css/AllQuestions.css' 
 import {Tabs} from '../components/Tabs'
 import {Tab} from '../components/Tab'
-import QuestionCard from '../components/QuestionCard'
+import QuestionCard from '../containers/QuestionCard'
 import _ from 'lodash'
 
 class AllQuestions extends React.Component {
