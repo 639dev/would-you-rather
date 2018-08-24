@@ -1,7 +1,8 @@
 import React from 'react'
 import '../assets/css/Header.css'
 import { connect } from 'react-redux'
-import { Redirect,NavLink } from 'react-router-dom'
+import { Redirect,NavLink,withRouter } from 'react-router-dom'
+import { logOut } from '../actions/authedUser'
 import _ from 'lodash'
 
 
@@ -9,12 +10,14 @@ import _ from 'lodash'
 class Header extends React.Component {
 	constructor(props) {
 		super(props)
-		this.logout = this.logout.bind(this)
+		this.handleLogout = this.handleLogout.bind(this)
 	}
-	logout () {
-		console.log('ss')
-		return <Redirect to='/login'/>
+
+	handleLogout = async event => {
+	  this.props.dispatch(logOut())
+	  this.props.history.push("/login");
 	}
+
 	render() {
 		const {users} = this.props
 		const authedUser = _.values(this.props.authedUser)
@@ -35,7 +38,7 @@ class Header extends React.Component {
 				    {this.props.authedUser !== null && (
 				  		<p className="user-greeting">Hello {user.id} </p>
 				  	)}
-				    <a href="#0" className="sign-out-link">Sign Out</a>
+				    <button onClick={this.handleLogout} className="sign-out-link">Sign Out</button>
 				  </div>
 				</header>
 			</div>
@@ -51,17 +54,4 @@ function mapStateToProps ({ authedUser,users }) {
   }
 }
 
-export default connect(mapStateToProps)(Header)
-
-
-
-		// <header className="App-header">
-		// 		<div className="header-text">
-		// 			<h1> Would you Rather!</h1>
-		// 		</div>
-		// 		<div className="user-info">	
-		// 			<h2 className="user-greeting"> Hello {user.id}</h2>
-		// 			<img src={user.avatarURL} alt="user-img" className="user-img" height="50"/>
-		// 			<a onClick={this.logout}><img src={'https://img.icons8.com/color/logout/100'} alt="user-img" className="logout-img" height="50"/></a>  
-		// 		</div>
-		// 	</header>
+export default withRouter(connect(mapStateToProps)(Header))

@@ -14,15 +14,28 @@ class Login extends Component {
 	    this.handleSubmit = this.handleSubmit.bind(this);
   	}
 
-	handleSubmit(event) {
-		if(this.state.picked != false) {
-			console.log("no")
-		    event.preventDefault();
-		    const { dispatch } = this.props
-		    dispatch(setAuthedUser({
+	// handleSubmit(event) {
+	// 	if(this.state.picked != false) {
+	// 		console.log("no")
+	// 	    event.preventDefault();
+	// 	    const { dispatch } = this.props
+	// 	    dispatch(setAuthedUser({
+	// 	      id: this.state.authedUser
+	// 	    }))
+	// 	}
+	// }
+
+	handleSubmit = async event => {
+	  event.preventDefault();
+	  const { dispatch } = this.props
+	  try {
+	    await dispatch(setAuthedUser({
 		      id: this.state.authedUser
 		    }))
-		}
+	    this.props.history.push("/");
+	  } catch (e) {
+	    alert(e.message);
+	  }
 	}
 
 	render() {
@@ -42,7 +55,7 @@ class Login extends Component {
 					  </select>
 					</div>
 				</form>
-				<button className="Login__btn" onClick={this.handleSubmit}><Link to={this.state.picked? '/' : 'error'}>Sign in</Link></button>
+				<button className="Login__btn" onClick={this.handleSubmit}>Sign in</button>
 		      <p className="Login__info"> </p>
 		    </div>
 	    )
