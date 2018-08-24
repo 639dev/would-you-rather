@@ -2,10 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { handleSaveAnswer } from '../actions/questions' 
 import { handleSaveUserAnswer } from '../actions/users'
-import { Redirect } from 'react-router-dom'
 import { Card } from "@blueprintjs/core";
 import '../assets/css/Poll.css'
-import _ from 'lodash'
 
 
 class Poll extends React.Component {
@@ -18,10 +16,10 @@ class Poll extends React.Component {
 
 	save_answer(e) {
 		e.preventDefault()
-	    const { dispatch, question ,users ,authedUser } = this.props
+	    const { dispatch, question,user } = this.props
 	    const answer = this.state.selectedOption
-	    dispatch(handleSaveAnswer(authedUser.id,question.id,answer))
-	    dispatch(handleSaveUserAnswer(authedUser.id,question.id,answer))
+	    dispatch(handleSaveAnswer(user.id,question.id,answer))
+	    dispatch(handleSaveUserAnswer(user.id,question.id,answer))
 	}
 
 	handleOptionChange(e){
@@ -31,22 +29,15 @@ class Poll extends React.Component {
 	}
 
 	render() {
-		const { question } = this.props
+		const { question,user,has_answered} = this.props
 
-	    if (typeof question == 'undefined') {
-	      return <p>This Question doesn't exist</p>
-	    }
-
-	    if (this.props.authedUser === null) {
-	      return <Redirect to='/login' />
-	    }
-	    if (this.props.has_answered) {
+	    if (has_answered) {
 	    	return (
 			<Card className="card">
-			    <h2><a href="">{this.props.question.author} asks...</a></h2>
+			    <h2><a href="">{question.author} asks...</a></h2>
 			    <div className="card-info">
 			    	<div className="image-div">
-			    		<img src={this.props.user[0].avatarURL} alt="user-img" className="card-img" />
+			    		<img src={user.avatarURL} alt="user-img" className="card-img" />
 			    	</div>
 			    	<div className="q-div align-left">
 			    		<div className="option">
@@ -69,10 +60,10 @@ class Poll extends React.Component {
 	    }
 		return (
 			<Card className="card">
-			    <h2><a href="">{this.props.question.author} asks...</a></h2>
+			    <h2><a href="">{question.author} asks...</a></h2>
 			    <div className="card-info">
 			    	<div className="image-div">
-			    		<img src={this.props.user[0].avatarURL} alt="user-img" className="card-img" />
+			    		<img src={user.avatarURL} alt="user-img" className="card-img" />
 			    	</div>
 			    	<div className="q-div">
 			    		<form onSubmit={this.save_answer} className="form">
@@ -96,14 +87,13 @@ class Poll extends React.Component {
 
 
 function mapStateToProps ({ authedUser, users,questions}, props) {
-  const { id } = props.match.params
-  const user = _.values(users).filter((user) => user.id == authedUser.id )
-  const question1 = _.values(questions).filter((question) => question.id == id)
-  const has_answered = user[0].answers.hasOwnProperty(question1[0].id)
-  let opt1votes = question1[0].optionOne.votes.length
-  let opt2votes = question1[0].optionTwo.votes.length
+  const { id }  = props.match.params
+  const user 	= users[authedUser.id]
+  const question = questions[id];
+  const has_answered = user.answers.hasOwnProperty(question.id)
+  let opt1votes = question.optionOne.votes.length
+  let opt2votes = question.optionTwo.votes.length
   const totalVotes = opt1votes + opt2votes
-
   if (totalVotes !== 0) {
   	opt1votes =  ((opt1votes/totalVotes) * 100).toFixed(2)
   	opt2votes =  ((opt2votes/totalVotes) * 100).toFixed(2)
@@ -111,11 +101,10 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   return {
   	id,
   	user,
-  	authedUser,
   	has_answered,
   	opt1votes,
   	opt2votes,
-  	question: question1[0],
+  	question,
   }
 }
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card } from "@blueprintjs/core";
-import _ from 'lodash'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions';
 import { Redirect } from 'react-router-dom'
@@ -62,8 +61,7 @@ class AddQuestion extends React.Component {
 
 
 function mapStateToProps ({ authedUser, users}) {
-  const user = _.values(users).filter((user) => user.id == authedUser.id )
-  const autheduser = user[0]
+  const autheduser = users[authedUser.id]
   return {
   	autheduser
   }

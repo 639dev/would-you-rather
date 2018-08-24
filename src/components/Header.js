@@ -1,7 +1,7 @@
 import React , {Fragment} from 'react'
 import '../assets/css/Header.css'
 import { connect } from 'react-redux'
-import { Redirect,NavLink,withRouter } from 'react-router-dom'
+import { NavLink,withRouter } from 'react-router-dom'
 import { logOut } from '../actions/authedUser'
 import _ from 'lodash'
 
@@ -19,9 +19,6 @@ class Header extends React.Component {
 	}
 
 	render() {
-		const {users} = this.props
-		const authedUser = _.values(this.props.authedUser)
-		const user = _.values(users).find(function (obj) { return obj.id == authedUser })
 		return (
 			<div className="header-div">
 				<header className="site-header">
@@ -37,7 +34,7 @@ class Header extends React.Component {
 						 
 						  <div className="actions"> 
 						    	<Fragment>
-						  			<p className="user-greeting">Hello {user.id} </p>
+						  			<p className="user-greeting">Hello {this.props.authedUser.id} </p>
 						    		<button onClick={this.handleLogout} className="sign-out-link">Sign Out</button>
 						    	</Fragment>
 						  </div>
@@ -52,10 +49,9 @@ class Header extends React.Component {
 }
 
 
-function mapStateToProps ({ authedUser,users }) {
+function mapStateToProps ({ authedUser }) {
   return {
     authedUser: authedUser,
-    users: users
   }
 }
 
