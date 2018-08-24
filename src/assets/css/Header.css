@@ -67,4 +67,7 @@
   font-size: 0.8rem;
   margin-left: 10px;
   text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }

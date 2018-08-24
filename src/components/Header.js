@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {Fragment} from 'react'
 import '../assets/css/Header.css'
 import { connect } from 'react-redux'
 import { Redirect,NavLink,withRouter } from 'react-router-dom'
@@ -36,9 +36,11 @@ class Header extends React.Component {
 				 
 				  <div className="actions"> 
 				    {this.props.authedUser !== null && (
-				  		<p className="user-greeting">Hello {user.id} </p>
-				  	)}
-				    <button onClick={this.handleLogout} className="sign-out-link">Sign Out</button>
+				    	<Fragment>
+				  			<p className="user-greeting">Hello {user.id} </p>
+				    		<button onClick={this.handleLogout} className="sign-out-link">Sign Out</button>
+				    	</Fragment>
+				    )}
 				  </div>
 				</header>
 			</div>
