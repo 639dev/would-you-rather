@@ -11,15 +11,23 @@ import _ from 'lodash'
 class Poll extends React.Component {
 	constructor(props) {
 	    super(props)
+	    this.state = {selectedOption: 'optionOne'}
 	    this.save_answer = this.save_answer.bind(this)
+	    this.handleOptionChange = this.handleOptionChange.bind(this)
   	}
 
 	save_answer(e) {
 		e.preventDefault()
 	    const { dispatch, question ,users ,authedUser } = this.props
-	    const answer = e.target.id == 'opt1' ? question['optionOne'] : question['optionTwo']
+	    const answer = this.state.selectedOption
 	    dispatch(handleSaveAnswer(authedUser.id,question.id,answer))
 	    dispatch(handleSaveUserAnswer(authedUser.id,question.id,answer))
+	}
+
+	handleOptionChange(e){
+	  this.setState({
+	    selectedOption: e.target.value
+	  });
 	}
 
 	render() {
@@ -69,11 +77,11 @@ class Poll extends React.Component {
 			    	<div className="q-div">
 			    		<form onSubmit={this.save_answer} className="form">
 			    			<div className="radio-div">
-								<input type="radio" name="answer" id="opt1"/>
+								<input type="radio" name="answer" value="optionOne" onChange={this.handleOptionChange} checked={true}/>
 								<label htmlFor="opt1">{question.optionOne.text}</label>
 							</div>
 							<div className="radio-div">
-								<input type="radio" name="answer" id="opt2"/>
+								<input type="radio" name="answer" value="optionTwo" onChange={this.handleOptionChange}/>
 								<label htmlFor="opt2">{question.optionTwo.text}</label>
 							</div>
 							<button type="submit">Save Answer</button>

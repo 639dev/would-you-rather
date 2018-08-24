@@ -10,9 +10,9 @@ export default function questions(state = {}, action) {
         ...state,
         [action.question]: {
           ...state[action.question],
-          ['optionOne']: {
-            ...state[action.question]['optionOne'],
-            votes: state[action.question]['optionOne'].votes.concat([action.user]),
+          [action.answer]: {
+            ...state[action.question][action.answer],
+            votes: state[action.question][action.answer].votes.concat([action.user]),
           },
         },
       };

@@ -32,7 +32,7 @@ export function handleSaveAnswer(user,question,answer) {
   return (dispatch) => {
     dispatch(saveAnswer(user,question,answer))
 
-    return _saveQuestionAnswer(user,question,'optionOne')
+    return _saveQuestionAnswer(user,question,answer)
       .catch((e) => {
         alert('The was an error saving the answer. Try again.')
       })
