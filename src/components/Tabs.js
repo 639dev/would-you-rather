@@ -50,3 +50,7 @@ export class Tabs extends Component {
         );
     }
 };
+
+
+
+// ref: https://medium.com/@diegocasmo/a-simple-react-tabs-component-47cac2cfbb5

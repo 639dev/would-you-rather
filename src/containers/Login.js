@@ -14,17 +14,6 @@ class Login extends Component {
 	    this.handleSubmit = this.handleSubmit.bind(this);
   	}
 
-	// handleSubmit(event) {
-	// 	if(this.state.picked != false) {
-	// 		console.log("no")
-	// 	    event.preventDefault();
-	// 	    const { dispatch } = this.props
-	// 	    dispatch(setAuthedUser({
-	// 	      id: this.state.authedUser
-	// 	    }))
-	// 	}
-	// }
-
 	handleSubmit = async event => {
 	  event.preventDefault();
 	  const { dispatch } = this.props
@@ -36,7 +25,7 @@ class Login extends Component {
 	  } catch (e) {
 	    alert(e.message);
 	  }
-	}
+	} //https://serverless-stack.com/chapters/redirect-on-login-and-logout.html
 
 	render() {
 		const {users} = this.props
