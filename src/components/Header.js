@@ -25,23 +25,26 @@ class Header extends React.Component {
 		return (
 			<div className="header-div">
 				<header className="site-header">
-				  
-				  <nav className="site-nav">
-				    <ul>
-				      <li><NavLink exact activeClassName="active"  to="/">Home</NavLink></li>
-					  <li><NavLink exact activeClassName="active"  to="/add">Add Question</NavLink></li>
-					  <li><NavLink exact activeClassName="active"  to="/LeaderBoard">Leader Board</NavLink></li>
-				    </ul>
-				  </nav>
-				 
-				  <div className="actions"> 
-				    {this.props.authedUser !== null && (
-				    	<Fragment>
-				  			<p className="user-greeting">Hello {user.id} </p>
-				    		<button onClick={this.handleLogout} className="sign-out-link">Sign Out</button>
-				    	</Fragment>
-				    )}
-				  </div>
+				  {this.props.authedUser !== null ? (
+				  	<Fragment>
+						  <nav className="site-nav">
+						    <ul>
+						      <li><NavLink exact activeClassName="active"  to="/">Home</NavLink></li>
+							  <li><NavLink exact activeClassName="active"  to="/add">Add Question</NavLink></li>
+							  <li><NavLink exact activeClassName="active"  to="/LeaderBoard">Leader Board</NavLink></li>
+						    </ul>
+						  </nav>
+						 
+						  <div className="actions"> 
+						    	<Fragment>
+						  			<p className="user-greeting">Hello {user.id} </p>
+						    		<button onClick={this.handleLogout} className="sign-out-link">Sign Out</button>
+						    	</Fragment>
+						  </div>
+				    </Fragment>
+				 ): 
+				  <h2>React App</h2>
+				}
 				</header>
 			</div>
 		)
