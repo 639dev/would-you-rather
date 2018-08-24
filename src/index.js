@@ -8,10 +8,24 @@ import reducers from './reducers'
 import middleware from './middleware'
 
 
-const store = createStore(reducers,middleware)
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
+import { PersistGate } from 'redux-persist/integration/react'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+
+const store = createStore(persistedReducer,middleware)
+const persistor = persistStore(store)
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App store={store}/>
+		<PersistGate loading={null} persistor={persistor}>
+			<App store={store}/>
+		</PersistGate>
 	</Provider>
-	, document.getElementById('root'));
+, document.getElementById('root'));
