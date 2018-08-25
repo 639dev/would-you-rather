@@ -40,18 +40,20 @@ class Poll extends React.Component {
 			    		<img src={user.avatarURL} alt="user-img" className="card-img" />
 			    	</div>
 			    	<div className="q-div align-left">
-			    		<div className="option">
+			    		<div className="option2">
 							<label htmlFor="opt1">{question.optionOne.text}</label>
 						</div>
 						<div className="bp3-progress-bar bp3-no-animation bp3-no-stripes">
-							  <div className="bp3-progress-meter" style={{width: this.props.opt1votes+'%'}}></div>
+							  <div className="bp3-progress-meter" style={{width: this.props.votes1+'%'}}></div>
 						</div>
-						<div className="option">
+						<em>{this.props.votes1 +'%'}  {this.props.opt1votes} out of {this.props.totalVotes} votes</em>
+						<div className="option2">
 							<label htmlFor="opt2">{question.optionTwo.text}</label>
 						</div>
 						<div className="bp3-progress-bar bp3-no-animation bp3-no-stripes">
-							<div className="bp3-progress-meter" style={{width: this.props.opt2votes+'%'}}></div>
+							<div className="bp3-progress-meter" style={{width: this.props.votes2+'%'}}></div>
 					    </div>
+					    <em>{this.props.votes2 +'%'}  {this.props.opt2votes} out of {this.props.totalVotes} votes</em>
 			    	</div>
 			    </div>
 			</Card>	
@@ -94,10 +96,8 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   let opt1votes = question.optionOne.votes.length
   let opt2votes = question.optionTwo.votes.length
   const totalVotes = opt1votes + opt2votes
-  if (totalVotes !== 0) {
-  	opt1votes =  ((opt1votes/totalVotes) * 100).toFixed(2)
-  	opt2votes =  ((opt2votes/totalVotes) * 100).toFixed(2)
-  }
+  const votes1 =  ((opt1votes/totalVotes) * 100).toFixed()
+  const votes2 =  ((opt2votes/totalVotes) * 100).toFixed()
   return {
   	id,
   	user,
@@ -105,6 +105,9 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   	opt1votes,
   	opt2votes,
   	question,
+  	votes1,
+  	votes2,
+  	totalVotes
   }
 }
 

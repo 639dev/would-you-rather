@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import user_ from '../assets/images/user.svg';
+import user_ from '../assets/images/user1.svg';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
