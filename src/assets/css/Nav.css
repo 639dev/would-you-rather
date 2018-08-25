@@ -14,11 +14,15 @@ ul {
 }
 
 ul a:hover {
-	background-color: #a4b0be;
+	background-color: #ff7f50;
 }
 
 .navigator .active1 {
-	background-color: #a4b0be;
+	background-color: #ff7f50;
+}
+
+.site-nav ul li .active {
+	background-color: #ff7f50;
 }
 .score {
 	background-image: url('../images/star.png');

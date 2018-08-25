@@ -8,11 +8,11 @@
   align-items: center;
   justify-content: center;
   height: 94.5%;
-  background-color: #d1ccc0;
+  background-color: #ced6e0;
   font-family: 'Baloo Bhai', cursive 
 }
 .Login__name {
-  color: #40407a;
+  color: #ff6348;
   font-size: 50px
 }
 .Login__status,
@@ -34,16 +34,16 @@
   color: #fff !important;
   display: block;
   font-family: 'Baloo Bhai', cursive;
-  background-color: #218c74;
+  background-color: #ff6348;
 }
 .Login__btn:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: #ff7f50;
   cursor: pointer;
 }
 
 .select{
   font-family: 'Baloo Bhai', cursive ;
   border-radius: 30px;
-  color: #40407a !important;
+  color: #ff6348 !important;
 }
 
