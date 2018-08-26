@@ -4,6 +4,7 @@ import Login from './containers/Login'
 import Home from './components/Home'
 import Header from './containers/Header' 
 import Nav from './components/Nav'
+import PageNotFound from './components/404'
 import Poll from './containers/Poll'
 import LeaderBoard from './containers/LeaderBoard'
 import AddQuestion from './containers/AddQuestion'
@@ -54,6 +55,11 @@ class App extends Component {
                 render={props => (
                   this.props.authedUser
                     ? <Poll  {...props}/>
+                    : <Redirect to="/login" />
+                )} />
+                <Route path="*" render={props => (
+                  this.props.authedUser
+                    ? <PageNotFound  {...props}/>
                     : <Redirect to="/login" />
                 )} />
             </Switch>
