@@ -14,7 +14,6 @@ export class Tabs extends Component {
     handleTabClick(tabIndex) {
         this.setState({
            activeTabIndex: tabIndex === this.state.activeTabIndex ? this.props.defaultActiveTabIndex : tabIndex
-            // tabIndex === this.state.activeTabIndex ? this.props.defaultActiveTabIndex : tabIndex
         });
     }
   

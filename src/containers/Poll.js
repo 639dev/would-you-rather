@@ -63,12 +63,14 @@ class Poll extends React.Component {
 		return (
 			<Card className="card">
 			    <h2><a href="">{question.author} asks...</a></h2>
-			    <div className="card-info">
+			    <div className="card-info height">
 			    	<div className="image-div">
 			    		<img src={user.avatarURL} alt="user-img" className="card-img" />
 			    	</div>
 			    	<div className="q-div">
 			    		<form onSubmit={this.save_answer} className="form">
+			    			<h3>Would you rather? </h3>
+
 			    			<div className="radio-div">
 								<input type="radio" name="answer" value="optionOne" onChange={this.handleOptionChange} checked={true}/>
 								<label htmlFor="opt1">{question.optionOne.text}</label>

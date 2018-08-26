@@ -18,6 +18,10 @@
   text-align: left;
 }
 
+.height {
+  height: 200px !important;
+}
+
 .option {
   margin: 17px 0;
 }
