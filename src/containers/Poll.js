@@ -29,8 +29,7 @@ class Poll extends React.Component {
 	}
 
 	render() {
-		const { question,user,has_answered} = this.props
-
+		const { question,user,has_answered,answer} = this.props
 	    if (has_answered) {
 	    	return (
 			<Card className="card">
@@ -41,6 +40,7 @@ class Poll extends React.Component {
 			    	</div>
 			    	<div className="q-div align-left">
 			    		<div className="option2">
+							<input type="radio" name="answer" value="optionOne" disabled checked={answer == 'optionOne'}/>
 							<label htmlFor="opt1">{question.optionOne.text}</label>
 						</div>
 						<div className="bp3-progress-bar bp3-no-animation bp3-no-stripes">
@@ -48,6 +48,7 @@ class Poll extends React.Component {
 						</div>
 						<em>{this.props.votes1 +'%'}  {this.props.opt1votes} out of {this.props.totalVotes} votes</em>
 						<div className="option2">
+							<input type="radio" name="answer" value="optionTwo" disabled checked={answer == 'optionTwo'}/>
 							<label htmlFor="opt2">{question.optionTwo.text}</label>
 						</div>
 						<div className="bp3-progress-bar bp3-no-animation bp3-no-stripes">
@@ -95,6 +96,7 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   const user 	= users[authedUser.id]
   const question = questions[id];
   const has_answered = user.answers.hasOwnProperty(question.id)
+  const answer = user.answers[question.id]
   let opt1votes = question.optionOne.votes.length
   let opt2votes = question.optionTwo.votes.length
   const totalVotes = opt1votes + opt2votes
@@ -109,6 +111,7 @@ function mapStateToProps ({ authedUser, users,questions}, props) {
   	question,
   	votes1,
   	votes2,
+  	answer,
   	totalVotes
   }
 }
