@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import user_ from '../assets/images/user1.svg';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 import '../assets/css/Login.css'
 import _ from 'lodash'
@@ -10,7 +10,7 @@ import _ from 'lodash'
 class Login extends Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {authedUser: null,picked:false};
+	    this.state = {authedUser: null,picked:false,redirect:false};
 	    this.handleSubmit = this.handleSubmit.bind(this);
   	}
 
@@ -21,7 +21,7 @@ class Login extends Component {
 	    await dispatch(setAuthedUser({
 		      id: this.state.authedUser
 		    }))
-	    this.props.history.push("/");
+	    this.setState({redirect: true})
 	  } catch (e) {
 	    alert(e.message);
 	  }
@@ -29,7 +29,11 @@ class Login extends Component {
 
 	render() {
 		const {users} = this.props
-	
+	    const { from } = this.props.location.state || { from: { pathname: "/" } };
+
+	    if(this.state.redirect) {
+	    	return <Redirect to={from} />
+	    }
 		return (
 			<div className="Login">
 		      <h1 className="Login__name">Would you Rather!</h1>

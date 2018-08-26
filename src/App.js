@@ -60,7 +60,10 @@ class App extends Component {
                 <Route path="*" render={props => (
                   this.props.authedUser
                     ? <PageNotFound  {...props}/>
-                    : <Redirect to="/login" />
+                    : <Redirect to={{
+                    pathname: '/login',
+                    state: { from: props.location }
+                }}/>
                 )} />
             </Switch>
           </div>
