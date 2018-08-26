@@ -9,9 +9,6 @@ import '../assets/css/Home.css'
 
 class Home extends React.Component {
 	render() {	
-		if (this.props.authedUser === null) {
-	      return <Redirect to='/login' />
-	    }
 		return (
 			<div>
 				<AllQuestions />

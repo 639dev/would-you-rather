@@ -1,5 +1,5 @@
 import React, { Component ,Fragment} from 'react';
-import { BrowserRouter as Router, Route,Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route,Switch,Redirect} from 'react-router-dom'
 import Login from './containers/Login'
 import Home from './components/Home'
 import Header from './containers/Header' 
@@ -25,12 +25,37 @@ class App extends Component {
            <LoadingBar />
             <Header/>
             <Switch>
-                <Route  exact path="/" component={Home} />
+                <Route  exact path="/" 
+                render={props => (
+                  this.props.authedUser
+                    ? <Home  />
+                    : <Redirect to="/login" />
+                )} />
                 <Route  path='/login' component={Login} />
-                <Route  exact path='/questions' component={AllQuestions} />
-                <Route  path='/add' component={AddQuestion} />
-                <Route  path='/LeaderBoard' component={LeaderBoard} />
-                <Route  exact path='/questions/poll/:id' component={Poll} />
+                <Route  exact path='/questions' 
+                render={props => (
+                  this.props.authedUser
+                    ? <AllQuestions  />
+                    : <Redirect to="/login" />
+                )} />
+                <Route  path='/add' 
+                render={props => (
+                  this.props.authedUser
+                    ? <AddQuestion  />
+                    : <Redirect to="/login" />
+                )} />
+                <Route  path='/LeaderBoard' 
+                render={props => (
+                  this.props.authedUser
+                    ? <LeaderBoard  />
+                    : <Redirect to="/login" />
+                )} />
+                <Route  exact path='/questions/poll/:id' 
+                render={props => (
+                  this.props.authedUser
+                    ? <Poll  />
+                    : <Redirect to="/login" />
+                )} />
             </Switch>
           </div>
       </Router>
@@ -40,5 +65,10 @@ class App extends Component {
 
 
 
+function mapStateToProps ({ authedUser}) {
+  return {
+    authedUser
+  }
+}
 
-export default connect()(App)
+export default connect(mapStateToProps)(App)
