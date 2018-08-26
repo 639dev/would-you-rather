@@ -92,6 +92,7 @@ class Poll extends React.Component {
 
 
 function mapStateToProps ({ authedUser, users,questions}, props) {
+	console.log(props)
   const { id }  = props.match.params
   const user 	= users[authedUser.id]
   const question = questions[id];

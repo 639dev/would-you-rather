@@ -53,7 +53,7 @@ class App extends Component {
                 <Route  exact path='/questions/poll/:id' 
                 render={props => (
                   this.props.authedUser
-                    ? <Poll  />
+                    ? <Poll  {...props}/>
                     : <Redirect to="/login" />
                 )} />
             </Switch>
