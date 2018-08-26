@@ -13,7 +13,8 @@ export class Tabs extends Component {
     // Toggle currently active tab
     handleTabClick(tabIndex) {
         this.setState({
-            activeTabIndex: tabIndex === this.state.activeTabIndex ? this.props.defaultActiveTabIndex : tabIndex
+           activeTabIndex: tabIndex === this.state.activeTabIndex ? this.props.defaultActiveTabIndex : tabIndex
+            // tabIndex === this.state.activeTabIndex ? this.props.defaultActiveTabIndex : tabIndex
         });
     }
   
@@ -51,6 +52,8 @@ export class Tabs extends Component {
     }
 };
 
-
+Tabs.defaultProps = {
+    defaultActiveTabIndex: 0
+};
 
 // ref: https://medium.com/@diegocasmo/a-simple-react-tabs-component-47cac2cfbb5

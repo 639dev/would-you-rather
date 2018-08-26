@@ -12,7 +12,7 @@ class AllQuestions extends React.Component {
 		const { users } = this.props
 		return (
 			<Tabs>
-			    <Tab title="Unanswered Questions" linkClassName={'link-class-0'} className="tab">
+			    <Tab title="Unanswered Questions" linkClassName={'link-class-0'} className="tab" opened={true}>
 				    <div className="scrollable">
 					    { this.props.Unanswered.map( (question) => {
 					    	let user = users[question.author]
