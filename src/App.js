@@ -43,19 +43,28 @@ class App extends Component {
                 render={props => (
                   this.props.authedUser
                     ? <AddQuestion  />
-                    : <Redirect to="/login" />
+                    : <Redirect to={{
+                    pathname: '/login',
+                    state: { from: props.location }
+                }} />
                 )} />
                 <Route  path='/LeaderBoard' 
                 render={props => (
                   this.props.authedUser
                     ? <LeaderBoard  />
-                    : <Redirect to="/login" />
+                    : <Redirect to={{
+                    pathname: '/login',
+                    state: { from: props.location }
+                }} />
                 )} />
                 <Route  exact path='/questions/poll/:id' 
                 render={props => (
                   this.props.authedUser
                     ? <Poll  {...props}/>
-                    : <Redirect to="/login" />
+                    : <Redirect to={{
+                    pathname: '/login',
+                    state: { from: props.location }
+                }} />
                 )} />
                 <Route path="*" render={props => (
                   this.props.authedUser
@@ -65,6 +74,7 @@ class App extends Component {
                     state: { from: props.location }
                 }}/>
                 )} />
+                <Route path='/404' component={PageNotFound} />
             </Switch>
           </div>
       </Router>

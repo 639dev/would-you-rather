@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleSaveAnswer } from '../actions/questions' 
 import { handleSaveUserAnswer } from '../actions/users'
 import { Card } from "@blueprintjs/core";
+import { Redirect } from 'react-router-dom'
 import '../assets/css/Poll.css'
 
 
@@ -30,6 +31,10 @@ class Poll extends React.Component {
 
 	render() {
 		const { question,user,has_answered,answer} = this.props
+
+		if(question == null) {
+			return <Redirect to='/404' />
+		}
 	    if (has_answered) {
 	    	return (
 			<Card className="card">
@@ -94,26 +99,30 @@ class Poll extends React.Component {
 function mapStateToProps ({ authedUser, users,questions}, props) {
   const { id }  = props.match.params
   const user 	= users[authedUser.id]
-  const question = questions[id];
-  const has_answered = user.answers.hasOwnProperty(question.id)
-  const answer = user.answers[question.id]
-  let opt1votes = question.optionOne.votes.length
-  let opt2votes = question.optionTwo.votes.length
-  const totalVotes = opt1votes + opt2votes
-  const votes1 =  ((opt1votes/totalVotes) * 100).toFixed()
-  const votes2 =  ((opt2votes/totalVotes) * 100).toFixed()
-  return {
-  	id,
-  	user,
-  	has_answered,
-  	opt1votes,
-  	opt2votes,
-  	question,
-  	votes1,
-  	votes2,
-  	answer,
-  	totalVotes
-  }
+  const question = questions[id] ? questions[id] : null;
+  if(question) {
+	  const has_answered = user.answers.hasOwnProperty(question.id)
+	  const answer = user.answers[question.id]
+	  let opt1votes = question.optionOne.votes.length
+	  let opt2votes = question.optionTwo.votes.length
+	  const totalVotes = opt1votes + opt2votes
+	  const votes1 =  ((opt1votes/totalVotes) * 100).toFixed()
+	  const votes2 =  ((opt2votes/totalVotes) * 100).toFixed()
+	  return {
+	  	id,
+	  	user,
+	  	has_answered,
+	  	opt1votes,
+	  	opt2votes,
+	  	question,
+	  	votes1,
+	  	votes2,
+	  	answer,
+	  	totalVotes
+	  }
+	}
+	return { question }
+  
 }
 
 export default connect(mapStateToProps)(Poll)
