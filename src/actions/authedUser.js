@@ -18,7 +18,6 @@ export function handleSetAuthUser(id) {
 
     return _getUsers()
       .then((users) => {
-        const auth = Object.keys(users).filter(user => user === id);
         dispatch(setAuthedUser(id));
       })
       .then(() => dispatch(hideLoading()));

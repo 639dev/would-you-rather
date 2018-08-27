@@ -1,9 +1,8 @@
-import React, { Component ,Fragment} from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,Switch,Redirect} from 'react-router-dom'
 import Login from './containers/Login'
 import Home from './components/Home'
 import Header from './containers/Header' 
-import Nav from './components/Nav'
 import PageNotFound from './components/404'
 import Poll from './containers/Poll'
 import LeaderBoard from './containers/LeaderBoard'

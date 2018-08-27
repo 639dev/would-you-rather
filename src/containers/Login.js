@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import user_ from '../assets/images/user1.svg';
 import { connect } from 'react-redux'
-import { Link,Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 import '../assets/css/Login.css'
 import _ from 'lodash'

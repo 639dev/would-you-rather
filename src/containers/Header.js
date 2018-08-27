@@ -3,7 +3,6 @@ import '../assets/css/Header.css'
 import { connect } from 'react-redux'
 import { NavLink,withRouter } from 'react-router-dom'
 import { logOut } from '../actions/authedUser'
-import _ from 'lodash'
 
 
 
