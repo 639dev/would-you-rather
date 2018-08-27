@@ -57,7 +57,7 @@ class App extends Component {
                     state: { from: props.location }
                 }} />
                 )} />
-                <Route  exact path='/questions/poll/:id' 
+                <Route  exact path='/questions/:id' 
                 render={props => (
                   this.props.authedUser
                     ? <Poll  {...props}/>

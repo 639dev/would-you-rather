@@ -17,7 +17,7 @@ class QuestionCard extends React.Component {
 			    	<div className="q-div">
 			    		<p> would you rather ... </p>
 			    		<em>{this.props.question.optionOne.text} ...</em>
-			    		<Link to={`/questions/poll/${this.props.question.id}`}>{this.props.text}</Link>
+			    		<Link to={`/questions/${this.props.question.id}`}>{this.props.text}</Link>
 			    	</div>
 			    </div>
 			</Card>	
