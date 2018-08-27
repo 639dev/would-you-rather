@@ -41,8 +41,12 @@ class AllQuestions extends React.Component {
 
 function mapStateToProps ({ authedUser, users,questions}) {
   const user = users[authedUser.id]
-  const Unanswered = _.values(questions).filter((question) => !user.answers.hasOwnProperty(question.id))
-  const Answered = _.values(questions).filter((question) => user.answers.hasOwnProperty(question.id))
+  const Unanswered = _.values(questions).filter((question) => !user.answers.hasOwnProperty(question.id)).sort(function (a, b) {
+      return b.timestamp > a.timestamp;
+    });
+  const Answered = _.values(questions).filter((question) => user.answers.hasOwnProperty(question.id)).sort(function (a, b) {
+      return b.timestamp > a.timestamp;
+    });
   return {
     Unanswered,
     Answered,
